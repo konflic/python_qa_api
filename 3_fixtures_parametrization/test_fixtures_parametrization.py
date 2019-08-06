@@ -8,8 +8,7 @@ def test_parametrized_with_fixture(fixture_with_params):
 
 
 # Параметризация одним параметром
-@pytest.mark.parametrize("test_input",
-                         [1, 2, 3])
+@pytest.mark.parametrize("test_input", [1, 2, 3])
 def test_parametrize_with_mark_single(test_input):
     assert test_input < 3
 
@@ -22,6 +21,7 @@ def test_parametrize_with_mark_multiple(test_input, expected):
 
 
 # Вложенная параметризация
+# Можно добавить
 @pytest.mark.parametrize("x", [0, 1])
 @pytest.mark.parametrize("y", [2, 3])
 def test_foo(x, y):
