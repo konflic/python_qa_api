@@ -1,6 +1,7 @@
 import pprint
 import requests
 
+# Про передачу параметров
 r = requests.get('https://jsonplaceholder.typicode.com/posts/1')
 
 print("\n------- status/headers/encoding ---------")
@@ -14,4 +15,3 @@ print(pprint.pprint(r.json()))
 print("\n---------------- headers ----------------")
 for key, value in r.headers.items():
     print(key, ' => ', value)
-

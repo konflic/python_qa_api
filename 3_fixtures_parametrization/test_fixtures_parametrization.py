@@ -14,8 +14,18 @@ def test_parametrize_with_mark_single(test_input):
 
 
 # Использование нескольких параметров
-@pytest.mark.parametrize("test_input, expected", [("3+5", 8), ("2+4", 6), ("6*9", 42)],
-                         ids=["Three + Five", "Two + Four", "Six by Nine"])
+@pytest.mark.parametrize(
+    "test_input, expected",
+     [
+         ("3+5", 8),
+         ("2+4", 6),
+         ("6*9", 42)
+     ],
+     ids=[
+         "Three + Five",
+         "Two + Four",
+         "Six by Nine"]
+     )
 def test_parametrize_with_mark_multiple(test_input, expected):
     assert eval(test_input) == expected
 
