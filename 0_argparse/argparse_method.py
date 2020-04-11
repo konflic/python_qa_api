@@ -4,7 +4,6 @@ parser = argparse.ArgumentParser()
 
 """
     Все параметры для add_argument
-    
     name or flags - Either a name or a list of option strings, e.g. foo or -f, --foo.
     action - The basic type of action to be taken when this argument is encountered at the command line.
     nargs - The number of command-line arguments that should be consumed.
@@ -22,7 +21,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--method', '-m',
                     action='store',
                     help='Method to make request',
-                    default='GET')
+                    default='GET',
+                    choices=['GET', 'POST'])
 
 parser.add_argument('--url', '-u',
                     action='store',
@@ -33,26 +33,6 @@ parser.add_argument('--url', '-u',
 parser.add_argument('--true', '-t',
                     action='store_true',
                     help='True or false param',
-                    required=False)
-
-# Добавляение значений в список по параметру
-# python3 2_argparse_method.py --url=ya.ru -s
-parser.add_argument('--save', '-s',
-                    action='append_const',
-                    const='const_to_save',
-                    dest='const_collection',
-                    default=[],
-                    help='Store params in list',
-                    required=False)
-
-# Добавляение значений в список по параметру
-# python3 2_argparse_method.py --url=ya.ru -s -s2
-parser.add_argument('--save2', '-s2',
-                    action='append_const',
-                    const='const_to_save2',
-                    dest='const_collection',
-                    default=[],
-                    help='Store params in list',
                     required=False)
 
 # Парсим всё что положили

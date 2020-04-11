@@ -3,8 +3,8 @@
 
 Код и примеры для занятия по тестированию API
 
-1) Аргументы командной строки, аргументы в pytest
-2) requests, json
+1) Argraprse, аргументы в pytest
+2) requests
 3) Параметризация фикстур
 4) Тестирование API
 
@@ -25,7 +25,6 @@ Representational State Transfer (REST) is a software architectural style that de
 https://api.spacexdata.com/ - SpaceX
 
 https://jsonplaceholder.typicode.com/ - Тестовое API
-(Хорошее описание http://qaru.site/questions/112998/what-is-the-difference-between-put-post-and-patch)
 
 https://rapidapi.com/ - Библиотека разных API
 
@@ -36,3 +35,7 @@ https://www.cbr-xml-daily.ru/ - API Центробанка
 - Всегда 200, коды ошибок и ответов внутри ответа (Поддержка GET, POST)
 
 - Могут быть различные коды ответов (PUT, PATCH, DELETE ... ) 
+
+## Дополнительно
+
+Хорошее описание http://qaru.site/questions/112998/what-is-the-difference-between-put-post-and-patch

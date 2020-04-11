@@ -1,7 +1,7 @@
-def test_answer(url_param):
-    if url_param == "ya.ru":
-        print("YAAAAANDEX")
-    elif url_param == "google.com":
-        print("GOOOGLE!")
-    else:
-        print("DuckDuckGOOOOO")
+import pytest
+
+
+@pytest.mark.parametrize("code", [200, 300, 400, 500])
+def test_url_status(url, code, method):
+    response = method(url + "/status/{}".format(code))
+    assert response.status_code == code
