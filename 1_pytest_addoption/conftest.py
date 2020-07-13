@@ -2,12 +2,10 @@ import pytest
 import requests
 
 
-# docker run -p 8080:80 kennethreitz/httpbin
-
 def pytest_addoption(parser):
     parser.addoption(
         "--url",
-        default="http://localhost:8080",
+        default="https://httpbin.org/",
         help="This is request url"
     )
 

@@ -1,11 +1,8 @@
-"""Пример на jsonschema"""
 from jsonschema import validate
 
 
 def test_api_json_schema(api_client):
-    """
-    Проверка структуры ответа за запрос /todos/1
-    """
+    """Проверка структуры ответа за запрос /todos/1"""
     res = api_client.get(path="/todos/1")
 
     schema = {

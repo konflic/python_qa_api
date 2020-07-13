@@ -1,22 +1,27 @@
 import requests
 
-# Запустить прокси
+# Запустить проксю
 proxies = {
-  "http": "http://localhost:8080",
-  "https": "http://localhost:8080",
+    "http": "http://127.0.0.1:8080",
+    "https": "http://localhost:8080",
 }
 
 data = {
-    'title': 'this_is_my_title',
-    'body': 'this is body text for this test request',
-    'userId': 1
+    "title": "this_is_my_title",
+    "body": "this is body text for this test request",
+    "userId": 1,
 }
 
 headers = {
-    'Content-type': 'application/json; charset=UTF-8'
+    "Content-type": "application/json; charset=UTF-8"
 }
 
-response = requests.post("https://jsonplaceholder.typicode.com/posts",
-                         data=data, headers=headers, proxies=proxies, verify=False)
+# json, data
+response = requests.post(
+    "https://jsonplaceholder.typicode.com/posts",
+    headers=headers,
+    json=data,
+    verify=False
+)
 
 print(response.text)
