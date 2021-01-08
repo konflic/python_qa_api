@@ -1,7 +1,8 @@
+"""Script for creating url based on script parameters"""
 import argparse
+import requests
 
 parser = argparse.ArgumentParser()
-
 
 parser.add_argument('--schema',
                     help='schema',
@@ -14,17 +15,21 @@ parser.add_argument('--host',
                     type=str,
                     default="localhost")
 
-# Если параметр передан то Ture, иначе False
 parser.add_argument('--path',
                     default='/',
                     type=str,
-                    help='True or false param',
+                    help='Path to make request on host',
                     required=False)
 
+
 def url_maker(schema, host, path):
-    return schema + "://" + host + path
+    url = schema + "://" + host + path
+    print(f"Created url: {url}")
+    return url
 
 
 args = parser.parse_args()
 
-print(url_maker(args.schema, args.host, args.path))
+response = requests.get(url=url_maker(args.schema, args.host, args.path))
+
+print("Got response status code:", response.status_code)

@@ -21,7 +21,7 @@ def test_api_post_request(api_client, input_id, output_id, input_title, output_t
     assert res_json['userId'] == output_id
 
 
-# Параметр фильтрации постов по Id пользователя
+# Param filtering users posts by id
 # https://jsonplaceholder.typicode.com/posts?userId=1
 @pytest.mark.parametrize('userId', [-1, 0, 'a', 11])
 def test_api_empty_response(api_client, userId):
@@ -33,16 +33,14 @@ def test_api_empty_response(api_client, userId):
     assert res.json() == []
 
 
-# Параметр фильтрации постов по Id пользователя
+# Param filtering users by id
 # https://jsonplaceholder.typicode.com/posts?userId=1
 @pytest.mark.parametrize('userId, userId_in_response', [(1, 1), (2, 2), (10, 10)])
 def test_api_filtering(api_client, userId, userId_in_response):
     response = api_client.get(
         path="/posts",
         params={'userId': userId}
-    )
-    # Проверка что случайный пост от пользователя с ожидаемым id
-    response_json = response.json()
+    ).json()
     random_post_number = random.randint(1, 9)
-    assert len(response_json) > 0
-    assert response.json()[random_post_number]['userId'] == userId_in_response
+    assert len(response) > 0
+    assert response[random_post_number]['userId'] == userId_in_response

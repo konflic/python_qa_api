@@ -1,8 +1,13 @@
 def test_init_database(api_client):
     response = api_client.get("/create/init")
-    assert response.json().get("status") == "created"
-
+    try:
+        assert response.json().get("status") == "created"
+    except AssertionError:
+        raise AssertionError(response.json())
 
 def test_reinit_database(api_client):
     response = api_client.get("/create/reinit")
-    assert response.json().get("status") == "table dropped and created"
+    try:
+        assert response.json().get("status") == "table dropped and created"
+    except AssertionError:
+        raise AssertionError(response.json())
