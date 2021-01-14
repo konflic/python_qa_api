@@ -1,13 +1,10 @@
 import pytest
 
-from APIClient import APIClient
-
 
 def pytest_addoption(parser):
-    parser.addoption("--url", help="Url for test api location")
+    parser.addoption("--url", help="Url for test api location", required=True)
 
 
 @pytest.fixture(scope="session")
-def api_client(request):
-    base_url = request.config.getoption("--url")
-    return APIClient(base_address=base_url)
+def base_url(request):
+    return request.config.getoption("--url")

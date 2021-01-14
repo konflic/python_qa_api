@@ -18,20 +18,10 @@ def pytest_addoption(parser):
 
 
 @pytest.fixture
-def url(request):
+def base_url(request):
     return request.config.getoption("--url")
 
 
 @pytest.fixture
-def method(request):
-    m = request.config.getoption("--method")
-    if m == "post":
-        return requests.post
-    elif m == "get":
-        return requests.get
-    elif m == "delete":
-        return requests.delete
-    elif m == "put":
-        return requests.put
-    elif m == "patch":
-        return requests.patch
+def request_method(request):
+    return getattr(requests, request.config.getoption("--method"))

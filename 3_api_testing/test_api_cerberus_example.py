@@ -1,9 +1,10 @@
 import cerberus
+import requests
 
 
-def test_api_json_schema(api_client):
+def test_api_json_schema(base_url):
     """Проверка структуры ответа за запрос /todos/1"""
-    res = api_client.get(path="/todos/1")
+    res = requests.get(base_url + "/todos/1")
 
     schema = {
         "id": {"type": "number"},

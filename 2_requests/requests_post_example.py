@@ -1,6 +1,6 @@
 import requests
 
-# Запустить проксю
+# Run mitmproxy to use
 proxies = {
     "http": "http://127.0.0.1:8080",
     "https": "http://localhost:8080",
