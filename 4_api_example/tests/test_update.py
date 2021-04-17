@@ -9,9 +9,9 @@ AUTH_DATA = {"login": "admin", "password": "admin"}
 
 def test_create_add_get(base_url):
     response = requests.get(base_url + "/update/add")
-    assert response.status_code == 200
+    assert response.status_code == 405
     assert response.json().get("status") == "error"
-    assert response.json().get("description") == "method_not_allowed"
+    assert response.json().get("description") == "this method should not be here"
 
 
 def test_create_add_post_auth(base_url):
@@ -29,7 +29,8 @@ def test_authorization(base_url):
 schema = {
     "name": {"type": "string", "required": True},
     "surname": {"type": "string", "required": True},
-    "grade": {"type": "number", "required": True}
+    "grade": {"type": "number", "required": True},
+    "sex": {"type": "string", "required": True}
 }
 
 
@@ -41,7 +42,7 @@ def test_update_add_authorized_session(base_url):
     session.request("login", base_url + "/auth/login", json=AUTH_DATA)
 
     # Create user
-    data_to_make = {"name": "Test" + str(random.randint(10, 1000)), "surname": "TestSurname", "grade": 10}
+    data_to_make = {"name": "Test" + str(random.randint(10, 1000)), "surname": "TestSurname", "grade": 10, "sex": "male"}
     response = session.post(base_url + "/update/add", json=data_to_make)
 
     # Verify addition and response
